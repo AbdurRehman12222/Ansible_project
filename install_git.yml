@@ -1,0 +1,17 @@
+---
+- name: Install Git on Ubuntu Servers
+  hosts: servers  # Replace with the actual target server group from your inventory
+  become: yes  # Use become to execute tasks as a privileged user (e.g., sudo)
+  gather_facts: yes  # Gather facts about the target system
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+      when: ansible_facts['distribution'] == 'Ubuntu'  # Condition to check if the OS is Ubuntu
+
+    - name: Install Git
+      apt:
+        name: git
+        state: present
+      when: ansible_facts['distribution'] == 'Ubuntu'  # Condition to check if the OS is Ubuntu
