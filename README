@@ -1,0 +1,24 @@
+Ansible Playbook for Installing Jenkins and Docker on Servers
+Overview
+This Ansible playbook automates the installation of Jenkins and Docker on remote servers. It is designed to simplify the setup process and ensure consistent configurations across your servers.
+
+Prerequisites
+Before running the Ansible playbook, make sure you have the following prerequisites in place:
+
+1 Ansible Installed: Ensure that Ansible is installed on your local machine from which you intend to run the playbook. You can install Ansible, for example, on Ubuntu using the following command:
+"sudo apt-get install ansible"
+
+2 Configure the Inventory File: To manage remote servers, add their IP addresses to the "hosts" file. Make sure you grant the necessary permissions to the "hosts" file using:
+"sudo chmod 777 hosts"
+
+3 Test SSH Connectivity: Verify that the .pem key is correctly placed and functional by attempting to SSH into a remote server from your head server using the following command
+sudo ssh -i /path/to/your/.pem_key username@ip_address_of_server
+make sure to give access to your .pem file using "SUDO CHMOD 600 /.SSH/ANSIBLE-KEY" 
+
+4 Check Server Connectivity: Confirm that all remote servers are successfully connected by pinging them with Ansible:
+"ansible -i /path/to/your/inventory -m ping all"
+
+5 Run Playbooks: After confirming successful server connections, create your playbooks and execute them using the following command:
+"ansible-playbook -i /path/to/your/inventory your_playbook.yml"
+
+6 Ensure you replace /path/to/your/ and your_playbook.yml with the appropriate paths and playbook filenames. This playbook will automate the installation of Jenkins and Docker on your servers, making the process efficient and consistent.
